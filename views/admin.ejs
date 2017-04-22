@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html ng-app="matApp">
+<head>
+<title>ماتستعجل</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="style.css">
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-resource.min.js"></script>
+
+ 
+ <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular-route.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+<script src="app.js"></script>
+</head>
+<body id="admin-body">
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyDypZaqxzZK1Ve3kGt8na0rJ5Yr2DMr3P4",
+    authDomain: "ma-testa3jel-app.firebaseapp.com",
+    databaseURL: "https://ma-testa3jel-app.firebaseio.com",
+    projectId: "ma-testa3jel-app",
+    storageBucket: "ma-testa3jel-app.appspot.com",
+    messagingSenderId: "528695906342"
+  };
+  firebase.initializeApp(config);
+</script>
+
+
+<div class="container login-container">
+    <div class="row">
+        <div class="col-sm-6 col-md-4 col-md-offset-4">
+            <h1 class="text-center login-title">Sign in</h1>
+            <div class="account-wall">
+                <img class="profile-img" src="https://lh5.googleusercontent.com/-b0-k99FZlyE/AAAAAAAAAAI/AAAAAAAAAAA/eu7opA4byxI/photo.jpg?sz=120"
+                    alt="">
+                <div class="form-signin">
+                <input id= "login-email" type="text" class="form-control" placeholder="Email" required autofocus>
+                <input id= "login-password" type="password" class="form-control" placeholder="Password" required>
+                <button id= "login-btn" class="btn btn-lg btn-primary btn-block" >
+                    Sign in</button>
+                <label class="checkbox pull-left">
+                    <input type="checkbox" value="remember-me">
+                    Remember me
+                </label>
+                <a href="#" class="pull-right need-help">Need help? </a><span class="clearfix"></span>
+               
+            </div>
+           </div>
+        </div>
+    </div>
+</div>
+
+
+<footer>
+  <div class="wrapper">
+
+        <h5 class="content-center inline-block"> Developed by <a href="https://digitalalertapps.com">digitalalertapps.com</a> </h5> 
+    
+        <nav>
+
+        <a href="#"  class ="button btn-scroll  call-us-btn"> اتصل بنا | </a> 
+        <a href="#"  class ="">00962796575425</a> 
+        <a href="https://web.facebook.com/Matesta3jel/"><i style= "color: #2196F3;  font-size: 20px;" class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        </nav>
+  </div>
+
+</footer>
+
+
+<script type="text/javascript" src="main.js"></script>
+</body>
+</html>
