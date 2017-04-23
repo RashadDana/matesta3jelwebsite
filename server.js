@@ -3,7 +3,8 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose'),
 	autoIncrement = require('mongoose-auto-increment');
-var connection = mongoose.connect('mongodb://localhost/test');
+// var connection = mongoose.connect('mongodb://localhost/test');
+var connection = mongoose.connect('mongodb://admin:admin@ec2-54-163-210-122.compute-1.amazonaws.com:27017/MA_Database');
 var path = require('path');
 
 
