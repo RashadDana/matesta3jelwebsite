@@ -54,9 +54,9 @@ app.listen(3000);
 
 var userSchema = mongoose.Schema({
 	firebaseId: {type: String, required: true},
-	city: String,
-	area: String,
-	trafficLightId: Number,
+	city: {type: String, required: true},
+	area: {type: String, required: true},
+	trafficLightId: {type: String, required: true},
 	email: {type: String, required: true},
 	fullName : {type: String,required: true},
 	phone: {type: String,required: true},
