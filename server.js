@@ -121,6 +121,20 @@ lightSchema.plugin(autoIncrement.plugin, 'lightModel');
 
 var lightModel = mongoose.model("lightModel",lightSchema);
 
+var wareHouseSchema = mongoose.Schema({
+	city: {type: Number, required: true},
+	area: {type: Number, required: true},
+	englishName: {type: String, required: true, unique: true},
+	arabicName: {type: String, required: true, unique: true}
+
+},{collection: 'wareHouse'});
+
+wareHouseSchema.plugin(autoIncrement.plugin, 'wareHousetModel');
+
+var wareHouseModel = mongoose.model("wareHousetModel",wareHouseSchema);
+
+
+
 
 app.post('/api/user',function(req,res){
 
@@ -211,11 +225,35 @@ app.post('/api/light',function(req,res){
 
 });
 
+
+app.post('/api/wareHouse',function(req,res){
+
+	var house = req.body;
+	console.log(req.body);
+	
+
+	wareHousetModel
+		.create(house)
+		.then(
+			function(postObj){
+		 res.json(200); 
+		}
+,
+		function(error){
+			res.sendStatus(400);
+				}
+
+		);
+
+});
+
+
 app.get('/api/city',function(req,res){
 
 	  cityModel.find(function (err, cities) {
   if (err) return console.error(err);
   console.log(cities);
+  
   res.json(cities)
 });
 });
@@ -236,6 +274,16 @@ app.get('/api/light',function(req,res){
   if (err) return console.error(err);
   console.log(lights);
   res.json(lights)
+});
+});
+
+
+app.get('/api/wareHouse',function(req,res){
+		
+	  wareHouseModel.find( function (err, houses) {
+  if (err) return console.error(err);
+  console.log(houses);
+  res.json(houses)
 });
 });
 
