@@ -54,9 +54,9 @@ app.listen(3000);
 
 var userSchema = mongoose.Schema({
 	firebaseId: {type: String, required: true},
-	city: {type: String, required: true},
-	area: {type: String, required: true},
-	trafficLightId: {type: String, required: true},
+	city: {type: Number, required: true},
+	area: {type: Number, required: true},
+	trafficLightId: {type: Number, required: true},
 	email: {type: String, required: true},
 	fullName : {type: String,required: true},
 	phone: {type: String,required: true},
@@ -78,6 +78,32 @@ var userSchema = mongoose.Schema({
 userSchema.plugin(autoIncrement.plugin, 'userModel');
 
 var userModel = mongoose.model("userModel",userSchema);
+
+
+
+var wareHouseUserSchema = mongoose.Schema({
+	firebaseId: {type: String, required: true},
+	wareHouse: {type: Number, required: true},
+	email: {type: String, required: true},
+	fullName : {type: String,required: true},
+	phone: {type: String,required: true},
+	address: {type: String,required: true},
+	joined: {type: Date,required: true, default: Date.now},
+	lastActive:Date,
+	volunteerType: {type: String,required: true},
+	volunteerExperience: String,
+	lastCheckedIn: Date
+
+},{collection: 'wareHouseUser'});
+
+
+
+
+
+wareHouseUserSchema.plugin(autoIncrement.plugin, 'wareHouseUserModel');
+
+var wareHouseUserModel = mongoose.model("wareHouseUserModel",wareHouseUserSchema);
+
 
 var citySchema = mongoose.Schema({
 	
@@ -157,6 +183,29 @@ app.post('/api/user',function(req,res){
 		);
 
 });
+
+app.post('/api/wareHouseUser',function(req,res){
+
+	var user = req.body;
+	console.log(req.body);
+	
+
+	wareHousetModel
+		.create(user)
+		.then(
+			function(postObj){
+		 res.json(200); 
+		}
+,
+		function(error){
+			// res.sendStatus(400);
+			res.json(error)
+				}
+
+		);
+
+});
+
 
 
 app.post('/api/city',function(req,res){
