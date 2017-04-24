@@ -92,6 +92,10 @@ $(document).ready(function() {
         	'</div>'+
        		'<div id="collapseOne" class="panel-collapse collapse">'+
             '<div class="panel-body">'+
+            '<div class="super-duties">'+
+'<p style="color:#79c483;"> بما إنه معك سيارة، شو رايك تكون مشرف ؟ </br></p>'+
+                '<p>:وعليك مايلي</br> </br> حضور اجتماعات ماتستعجل - </br> التواصل اليومي مع المتطوعين عن طريق التطبيق -</br> تاكيد تواجدهم عن طريق  الكود الخاص بكل متطوع -</br> الالتزام بمواعيد التوزيع المحددة -</br> تبريد وحفظ كميات الماء و التمر -</br></p>'+
+'</div>'+
                '<div class="driving-license-kind">'+
                		'<p>هل ترغب بان تكون مشرفا ؟</p>'+
                     '<label for="id1" class="radio-inline">'+
@@ -102,11 +106,17 @@ $(document).ready(function() {
     'نعم'+
     '</label> '+
     '<input id="distribution-wantsSupervisor-field" type="radio" name="optradio" id="id2"> '+
-
+    '</br>'+
+    '</br>'+
+    '</br>'+
+'<span style="color:#79c483;"> شهادة مسؤول بالعمل التطوعي مختومة من ادارة السير المركزية اذا التزمت بالتوزيع معنا على الاقل ١٠ ايام</span>'+
                 '</div>'+
                 '</br>'+
-                '<p>: واجبات المشرف </br></p>'+
-                '<p>بحال رغبت ان تكون مشرفا عليك حضور اجتماعات ماتستعجل والتواصل اليومي مع المتطوعين عن طريق التطبيق وتاكيد تواجدهم عن طريق  الكود الخاص بكل متطوع بالاضافة الى الالتزام بمواعيد التوزيع الموحدة وتبريد وحفظ كميات الماء و التمر</br></p>'+
+                  '<label  for="id2" class="radio-inline">'+
+    '<span style="color:#ed2328 ;">انا متاكد اني استطيع ان اكون مشرفا على اشارتي انا باكد على التزامي مع ماتستعجل يوم اه ويوم لا على اشارتي</span>'+
+    '</label> '+
+                 '<input type="radio" name="optradioconfirm" id="id1"> '+
+  
 
             '</div>'+
       		'</div>'+
