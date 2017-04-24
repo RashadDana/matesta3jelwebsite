@@ -190,7 +190,7 @@ app.post('/api/wareHouseUser',function(req,res){
 	console.log(req.body);
 	
 
-	wareHousetModel
+	wareHouseUserModel
 		.create(user)
 		.then(
 			function(postObj){
