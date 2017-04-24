@@ -97,7 +97,7 @@ var cityModel = mongoose.model("cityModel",citySchema);
 
 
 var areaSchema = mongoose.Schema({
-	city: {type: Number, required: true, unique: true},
+	city: {type: Number, required: true},
 	englishName: {type: String, required: true, unique: true},
 	arabicName: {type: String, required: true, unique: true}
 
@@ -109,8 +109,8 @@ var areaModel = mongoose.model("areaModel",areaSchema);
 
 
 var lightSchema = mongoose.Schema({
-	city: {type: Number, required: true, unique: true},
-	area: {type: Number, required: true, unique: true},
+	city: {type: Number, required: true},
+	area: {type: Number, required: true},
 	englishName: {type: String, required: true, unique: true},
 	arabicName: {type: String, required: true, unique: true},
 	nickName:  String
