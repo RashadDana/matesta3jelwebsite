@@ -136,7 +136,8 @@ app.post('/api/user',function(req,res){
 		}
 ,
 		function(error){
-			res.sendStatus(400);
+			// res.sendStatus(400);
+			res.json(error)
 				}
 
 		);
