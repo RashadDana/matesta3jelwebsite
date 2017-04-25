@@ -179,6 +179,7 @@ app.post('/api/user',function(req,res){
 ,
 		function(error){
 			// res.sendStatus(400);
+			console.log(error)
 			res.json(error)
 				}
 
@@ -201,6 +202,7 @@ app.post('/api/wareHouseUser',function(req,res){
 ,
 		function(error){
 			// res.sendStatus(400);
+			console.log(error)
 			res.json(error)
 				}
 
