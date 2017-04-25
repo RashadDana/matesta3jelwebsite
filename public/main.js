@@ -9,6 +9,7 @@ $(document).ready(function() {
 	var city = 0;
 	var area = 0;
 	var trafficLight = 0;
+    var wareHouse = 0;
     var volunteerType = "default";
     var volunteerExperience = "none";
     var email = "default";
@@ -20,20 +21,22 @@ $(document).ready(function() {
 
     $(document).on('click', '#enable-collapse', function(){ 
 
-        if(wantsSupervisor == false){
+        // if(wantsSupervisor == false){
 
-            wantsSupervisor= true;
-        }else if (wantsSupervisor == true){
+        //     wantsSupervisor= true;
+        // }else if (wantsSupervisor == true){
         
-        wantsSupervisor= false;
-            }
+        // wantsSupervisor= false;
+        //     }
 
             if(wantsSupervisor == false){
-
-            $('#collapseOne').hide();
-        } else if(wantsSupervisor == true){
-
             $('#collapseOne').show();
+           
+            wantsSupervisor = true;
+        } else if(wantsSupervisor == true){
+             $('#collapseOne').hide();
+            
+            wantsSupervisor = false;
         }
 
             
@@ -47,7 +50,7 @@ $(document).ready(function() {
    
 
 
-	$(".btn-scroll").click(function() {
+	$(".btn-scroll").click(function(event) {
     
     // Preventing default action of the event
     event.preventDefault();
@@ -62,7 +65,7 @@ $(document).ready(function() {
 
 
 
-	$(document).on('click', '.traffic-light-item', function(){  
+	$(document).on('click', '.traffic-light-item', function(event){  
 
 
     	trafficLight = $(event.target).attr( 'lightId' );
@@ -134,7 +137,7 @@ $(document).ready(function() {
     });
 
 
-	$(document).on('click', '.area-item', function(){  
+	$(document).on('click', '.area-item', function(event){  
 
 
 		$('#menu3-list-item').removeClass('disabled');
@@ -172,7 +175,7 @@ $(document).ready(function() {
         
     });
 
-		$(document).on('click', '.city-item', function(){  
+		$(document).on('click', '.city-item', function(event){  
     
     	$('li').removeClass('disabled');
     	$('#menu2Link').attr('href', '#menu2');
@@ -215,8 +218,74 @@ $(document).ready(function() {
 
     $("#packaging-btn").click(function() {
 
-        volunteerType = "packaging";
 
+          $.ajax({
+            url:'/api/wareHouse',
+            contentType: 'application/json',
+            method: 'GET',
+            success: function(response){
+   
+  
+
+
+    volunteerType = "packaging";
+
+        $("#register-trafficlight-form").html('');
+
+        $("#register-trafficlight-form").append(''+
+
+        '<div class="container register-traffic-tabs">'+
+  
+  '<ul class="nav nav-tabs navbar-right">'+
+    
+    
+    
+   
+    '<li class="active"><a data-toggle="tab" href="#menu1">المستودعات</a></li>'+
+    
+  '</ul>'+
+
+  '<div class="tab-content">'+
+    
+    '<div id="menu1" class="tab-pane fade in active">'+
+      '<h3>الرجاء اختيار المستودع الاقرب لديك</h3>'+
+
+        '<div class="list-group" id="city-list">'+
+        
+        
+        
+        '</div>'+
+
+    '</div>'+
+    
+    
+  '</div>'+
+'</div>')
+for (var i = 0; i < response.length; i++) {
+    
+    console.log(response[i].englishName);
+    $("#city-list").append(''+
+    '<a class="list-group-item house-item " houseId="'+response[i]._id+'">'+response[i].arabicName+'</a>'
+    );
+}
+                
+            }
+
+
+         });
+
+
+       
+
+
+        
+
+    });
+
+        $(document).on('click', '.house-item', function(event){  
+    
+        
+        wareHouse = $(event.target).attr( 'houseId' );
          $("#register-trafficlight-form").html('');
 
          
@@ -235,6 +304,7 @@ $(document).ready(function() {
         '</div>');
         
 
+        
     });
 
     $(".distribution-btn").click(function() { 
@@ -335,9 +405,14 @@ $(document).on('click', '#sign-up-btn', function(){
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
+          alert('عذرا، كلمة السر المدخلة صعيفة');
+        } else if(errorCode == 'auth/email-already-in-use') {
+          alert('عذرا، البريد الالكتروني المدخل مستعمل مسبقا');
+        } else if(errorCode == 'invalid-email') {
+          alert('عذرا، صيغة الايميل المدخلة غير صحيحة');
+        }else {
+                alert(errorMessage);
+
         }
         console.log(error);
         // [END_EXCLUDE]
@@ -353,7 +428,7 @@ $(document).on('click', '#sign-up-btn', function(){
                     firebaseId: firebaseUser.uid,
                     city: city,
                     area: area,
-                    trafficLight: trafficLight,
+                    trafficLightId: trafficLight,
                     volunteerType: volunteerType,
                     email: email,
                     volunteerExperience:volunteerExperience,
@@ -367,6 +442,13 @@ $(document).on('click', '#sign-up-btn', function(){
             success: function(response){
                
                 console.log(response);
+
+                alert("تم التسجيل بنجاح");
+
+                $("#register-trafficlight-form").html('');
+
+                var n = $('#banner').position();
+                $('html, body').animate({ scrollTop: n.top },500);
             }
 
 
@@ -399,9 +481,14 @@ $(document).on('click', '#add-packaging-user-btn', function(){
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
+          alert('عذرا، كلمة السر المدخلة صعيفة');
+        } else if(errorCode == 'auth/email-already-in-use') {
+          alert('عذرا، البريد الالكتروني المدخل مستعمل مسبقا');
+        } else if(errorCode == 'invalid-email') {
+          alert('عذرا، صيغة الايميل المدخلة غير صحيحة');
+        }else {
+                alert(errorMessage);
+
         }
         console.log(error);
         // [END_EXCLUDE]
@@ -410,14 +497,12 @@ $(document).on('click', '#add-packaging-user-btn', function(){
 
         if (firebaseUser) {
          $.ajax({
-            url:'/api/user',
+            url:'/api/wareHouseUser',
             contentType: 'application/json',
             method: 'POST',
              data: JSON.stringify({
                     firebaseId: firebaseUser.uid,
-                    city: city,
-                    area: area,
-                    trafficLight: trafficLight,
+                    wareHouse: wareHouse,
                     volunteerType: volunteerType,
                     email: email,
                     volunteerExperience:volunteerExperience,
@@ -431,6 +516,13 @@ $(document).on('click', '#add-packaging-user-btn', function(){
             success: function(response){
                
                 console.log(response);
+
+                alert("تم التسجيل بنجاح");
+
+                $("#register-trafficlight-form").html('');
+
+                var n = $('#banner').position();
+                $('html, body').animate({ scrollTop: n.top },500);
             }
 
 
