@@ -1,6 +1,6 @@
 
 @import url('https://fonts.googleapis.com/css?family=Cairo');
-
+@import url('https://fonts.googleapis.com/css?family=Changa');
 /* ---------------------- variables ------------------*/
 
 
@@ -15,7 +15,9 @@ html, body{
 	padding: 0;
 	height: 100%;
 	width: 100%;
-	font-family: 'Cairo', sans-serif;
+	/*font-family: 'Cairo', sans-serif !important; */
+	font-family: 'Changa', sans-serif;
+	font-weight:900; 
 	background:#f2f1f8;
 
 }
@@ -35,7 +37,7 @@ textarea {
 	width: 1440px;
 	max-width: 90%;
 	margin: 0 auto;
-	font-family: 'Cairo', sans-serif;
+	/*font-family: 'Cairo', sans-serif;*/
 }
 
 .button {
@@ -582,6 +584,9 @@ footer{
 	padding:10%;
 	background:#f2f1f8;
 	color:#32205c;
+	font-size: 20px;
+	font-weight: bold;
+	text-align: right;
 
 }
 
@@ -594,7 +599,7 @@ font-weight: bold;
 }
 #type-content-dist{
 font-weight: bold;
-	padding:5%;
+	padding:10%;
 }
 
 
@@ -608,7 +613,7 @@ padding:5%;
 .driving-license-kind{
 
 	font-weight: bold;
-	padding:10%;
+	padding:5%;
 	background:#f2f1f8;
 	color:#32205c;
 }
@@ -616,6 +621,11 @@ padding:5%;
 .panel-body{
 color:#32205c;
 
+}
+
+.super-duties{
+
+	font-size: 20px;
 }
 
 
