@@ -49,7 +49,7 @@ app.post('/api/admin', function(req, res){
 });
 
 
-app.listen(80);
+app.listen(3000);
 
 
 var userSchema = mongoose.Schema({
