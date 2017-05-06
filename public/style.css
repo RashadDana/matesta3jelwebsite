@@ -86,11 +86,13 @@ a{
 
 #banner{
 
-	background: #32205c;
+	/*background: #32205c;*/
+	background: url('websitecover.png') fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: center; 
 	height: 80%;
+	width:  100%;
 
 
 
@@ -227,6 +229,13 @@ nav a {
     /*  #types .type {
    padding: 5%;
     }*/
+
+    #banner{
+
+	/*background: #32205c;*/
+	background: url('mobilewebsitecover.png') fixed;
+
+}
 
     #logo{
 
