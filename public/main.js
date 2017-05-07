@@ -388,7 +388,9 @@ $('.collapse').collapse();
 
 
 $(document).on('click', '#sign-up-btn', function(){  
-
+if( $('#distribution-expereince-field').val() == "") ||  $('#distribution-full-name-field').val() == "" || $('#distribution-phone-field').val() || $('#distribution-address-field').val(){
+        alert('عذرا، يرجى ادخال جميع البيانات');
+}else{
     var email = $('#distribution-email-field').val();
     var password = $('#distribution-password-field').val();
     
@@ -405,11 +407,12 @@ $(document).on('click', '#sign-up-btn', function(){
         var errorMessage = error.message;
         // [START_EXCLUDE]
         if (errorCode == 'auth/weak-password') {
-          alert('عذرا، كلمة السر المدخلة صعيفة');
+          alert('عذرا، كلمة السر المدخلة ضعيفة');
         } else if(errorCode == 'auth/email-already-in-use') {
           alert('عذرا، البريد الالكتروني المدخل مستعمل مسبقا');
         } else if(errorCode == 'invalid-email') {
           alert('عذرا، صيغة الايميل المدخلة غير صحيحة');
+        
         }else {
                 alert(errorMessage);
 
@@ -457,8 +460,7 @@ $(document).on('click', '#sign-up-btn', function(){
 
      }
      });
-
-
+}
 
     });
 
@@ -535,6 +537,13 @@ $(document).on('click', '#add-packaging-user-btn', function(){
 
     });
 
+
+$(document).on('click', '#how-to-button', function(){ 
+    event.preventDefault();
+    // Getting the height of the document
+    var n = $('#know-more').position();
+    $('html, body').animate({ scrollTop: n.top + 600 },500);
+}); 
 
 $(document).on('click', '#login-btn', function(){  
 
