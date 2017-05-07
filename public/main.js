@@ -156,7 +156,7 @@ $(document).ready(function() {
             
     });
 
-     $(document).on('click', '#sign-up-btn', function(event){  
+     $(document).on('click', '#id3', function(event){  
             confirmed = true;
 
             
