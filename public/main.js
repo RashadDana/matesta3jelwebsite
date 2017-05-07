@@ -388,9 +388,17 @@ $('.collapse').collapse();
 
 
 $(document).on('click', '#sign-up-btn', function(){  
-if( $('#distribution-expereince-field').val() == "") ||  $('#distribution-full-name-field').val() == "" || $('#distribution-phone-field').val() || $('#distribution-address-field').val(){
+if( ( $('#distribution-expereince-field').val() == "")){
         alert('عذرا، يرجى ادخال جميع البيانات');
-}else{
+}else if ( $('#distribution-full-name-field').val() == "") {
+
+alert('عذرا، يرجى ادخال جميع البيانات');
+} else if  ($('#distribution-phone-field').val() == "" ){
+        alert('عذرا، يرجى ادخال جميع البيانات');
+
+} else if ($('#distribution-address-field').val() == "" ){
+alert('عذرا، يرجى ادخال جميع البيانات');
+} else{
     var email = $('#distribution-email-field').val();
     var password = $('#distribution-password-field').val();
     
