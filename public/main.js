@@ -156,6 +156,12 @@ $(document).ready(function() {
             
     });
 
+     $(document).on('click', '#sign-up-btn', function(event){  
+            confirmed = true;
+
+            
+    });
+
 
 	$(document).on('click', '.area-item', function(event){  
 
