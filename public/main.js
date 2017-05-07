@@ -550,7 +550,7 @@ $(document).on('click', '#how-to-button', function(){
     event.preventDefault();
     // Getting the height of the document
     var n = $('#know-more').position();
-    $('html, body').animate({ scrollTop: n.top + 200 },500);
+    $('html, body').animate({ scrollTop: n.top + 300 },500);
 }); 
 
 $(document).on('click', '#login-btn', function(){  
