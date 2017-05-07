@@ -104,27 +104,32 @@ $(document).ready(function() {
                     '<label for="id1" class="radio-inline">'+
     'لا'+
     '</label> '+
-    '<input type="radio" name="optradio" id="id1"> '+
-    '<label for="id2" class="radio-inline">'+
+    '<input id="distribution-noSupervisor-field" type="radio" name="optradio" id="id1"> '+
+    '<label  for="id2" class="radio-inline">'+
     'نعم'+
     '</label> '+
     '<input id="distribution-wantsSupervisor-field" type="radio" name="optradio" id="id2"> '+
     '</br>'+
     '</br>'+
     '</br>'+
-'<span style="color:#79c483;"> شهادة مسؤول بالعمل التطوعي مختومة من ادارة السير المركزية اذا التزمت بالتوزيع معنا على الاقل ١٠ ايام</span>'+
+'<span  style="color:#79c483;"> شهادة مسؤول بالعمل التطوعي مختومة من ادارة السير المركزية اذا التزمت بالتوزيع معنا على الاقل ١٠ ايام</span>'+
                 '</div>'+
-                '</br>'+
-                  '<label  for="id2" class="radio-inline">'+
-    '<span style="color:#ed2328 ;">انا متاكد اني استطيع ان اكون مشرفا على اشارتي انا باكد على التزامي مع ماتستعجل يوم اه ويوم لا على اشارتي</span>'+
-    '</label> '+
-                 '<input type="radio" name="optradioconfirm" id="id1"> '+
+      
   
 
             '</div>'+
       		'</div>'+
    			'</div>'+
 			'</div>'+
+
+                    
+                  '<label  for="id2" class="radio-inline">'+
+    '<span  id="confirm-text" style="color:#ed2328 ;"> انا باكد على التزامي مع ماتستعجل يوم اه ويوم لا على اشارتي</span>'+
+    '</label> '+
+
+                 '<input type="radio" name="optradioconfirm" id="id3"> '+
+                  '</br>'+
+                  '</br>'+
         	'<button ng-click="createUser()" class="btn btn-success btn-block"  id="sign-up-btn" >انضم الينا</button>'+
         	
         '</div>');
@@ -134,6 +139,20 @@ $(document).ready(function() {
        
 
         
+    });
+
+    $(document).on('click', '#distribution-wantsSupervisor-field', function(event){  
+            $('#confirm-text').html('');
+            $('#confirm-text').append('انا متاكد اني استطيع ان اكون مشرفا على اشارتي');
+
+
+    });
+
+     $(document).on('click', '#distribution-noSupervisor-field', function(event){  
+            $('#confirm-text').html('');
+            $('#confirm-text').append('انا باكد على التزامي مع ماتستعجل يوم اه ويوم لا على اشارتي');
+
+            
     });
 
 
@@ -476,6 +495,16 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 
 $(document).on('click', '#add-packaging-user-btn', function(){  
 
+     if ( $('#packaging-full-name-field').val() == "") {
+
+alert('عذرا، يرجى ادخال جميع البيانات');
+} else if  ($('#packaging-phone-field').val() == "" ){
+        alert('عذرا، يرجى ادخال جميع البيانات');
+
+} else if ($('#packaging-address-field').val() == "" ){
+alert('عذرا، يرجى ادخال جميع البيانات');
+} else{
+
     var email = $('#packaging-email-field').val();
     var password = $('#packaging-password-field').val();
     
@@ -541,7 +570,7 @@ $(document).on('click', '#add-packaging-user-btn', function(){
         }
      });
 
-
+}
 
     });
 
