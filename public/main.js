@@ -18,6 +18,7 @@ $(document).ready(function() {
     var address = "default";
     var hasCar = false;
     var wantsSupervisor = false;
+    var confirmed = false;
 
     $(document).on('click', '#enable-collapse', function(){ 
 
@@ -407,6 +408,8 @@ $('.collapse').collapse();
 
 
 $(document).on('click', '#sign-up-btn', function(){  
+
+
 if( ( $('#distribution-expereince-field').val() == "")){
         alert('عذرا، يرجى ادخال جميع البيانات');
 }else if ( $('#distribution-full-name-field').val() == "") {
@@ -418,6 +421,8 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 } else if ($('#distribution-address-field').val() == "" ){
 alert('عذرا، يرجى ادخال جميع البيانات');
 } else{
+
+     if (confirmed == true){
     var email = $('#distribution-email-field').val();
     var password = $('#distribution-password-field').val();
     
@@ -487,8 +492,11 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 
      }
      });
-}
+}else {
+alert('يرجى التاكيد على التزامك بحملة ماتستعجل');
 
+}
+}
     });
 
 
