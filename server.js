@@ -159,7 +159,7 @@ var wareHouseSchema = mongoose.Schema({
 
 wareHouseSchema.plugin(autoIncrement.plugin, 'wareHousetModel');
 
-var wareHouseModel = mongoose.model("wareHousetModel",wareHouseSchema);
+var wareHouseModel = mongoose.model("wareHouseModel",wareHouseSchema);
 
 
 
