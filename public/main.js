@@ -198,6 +198,9 @@ $(document).ready(function() {
 
 
          });
+
+            var n = $('#scoll-anchor').position();
+    $('html, body').animate({ scrollTop: n.top },500);
         
     });
 
