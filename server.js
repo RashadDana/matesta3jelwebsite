@@ -285,7 +285,7 @@ app.post('/api/wareHouse',function(req,res){
 	console.log(req.body);
 	
 
-	wareHousetModel
+	wareHouseModel
 		.create(house)
 		.then(
 			function(postObj){
