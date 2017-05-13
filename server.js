@@ -342,3 +342,11 @@ app.get('/api/wareHouse',function(req,res){
 
 
 
+app.post('/api/userByFirebaseId',function(req,res){
+
+userModel.find({firebaseId:req.body.firebaseId}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
