@@ -76,9 +76,11 @@ $(document).ready(function() {
         $("#register-trafficlight-form").append(''+
         	'<div class="container form-wrapper fade in" ng-controller= "registerController" >'+
  			'<h1> معلومات المتطوع</h1>'+
+            '<input class="form-control info-form-item" id="distribution-full-name-field" placeholder="الاسم الكامل"/>'+
         	'<input class="form-control info-form-item" id="distribution-email-field" placeholder="البريد الالكتروني"/>'+
         	'<input class="form-control info-form-item" id="distribution-password-field" type="password" placeholder="كلمة السر"/>'+
-        	'<input class="form-control info-form-item" id="distribution-full-name-field" placeholder="الاسم الكامل"/>'+
+        	'<input class="form-control info-form-item" id="distribution-gender-field" type="password" placeholder="الجنس"/>'+
+            '<input class="form-control info-form-item" id="distribution-age-field" type="password" placeholder="العمر"/>'+
         	'<input class="form-control info-form-item" id="distribution-phone-field" placeholder="رقم الهاتف"/>'+
         	'<input class="form-control info-form-item" id="distribution-address-field" placeholder="العنوان - اقرب معلم"/>'+
             '<textarea class="form-control info-form-item" id="distribution-expereince-field" placeholder="خبرة تطوعية سابقة"/>'+
@@ -189,7 +191,7 @@ $(document).ready(function() {
 
                 for (var i = 0; i < response.length; i++) {
     
-                     console.log(response[i].englishName);
+                     
                          $("#menu3").append(''+
                              '<a class="list-group-item traffic-light-item " lightId="'+ response[i]._id+'">'+response[i].arabicName+'</a>'
     );
@@ -230,7 +232,7 @@ $(document).ready(function() {
 
                 for (var i = 0; i < response.length; i++) {
     
-                     console.log(response[i].englishName);
+                     
                          $("#menu2").append(''+
                              '<a class="list-group-item area-item " areaId="'+ response[i]._id+'">'+response[i].arabicName+'</a>'
     );
@@ -292,7 +294,7 @@ $(document).ready(function() {
 '</div>')
 for (var i = 0; i < response.length; i++) {
     
-    console.log(response[i].englishName);
+    
     $("#city-list").append(''+
     '<a class="list-group-item house-item " houseId="'+response[i]._id+'">'+response[i].arabicName+'</a>'
     );
@@ -387,7 +389,7 @@ for (var i = 0; i < response.length; i++) {
 '</div>')
 for (var i = 0; i < response.length; i++) {
     
-    console.log(response[i].englishName);
+    
     $("#city-list").append(''+
     '<a class="list-group-item city-item " cityId="'+response[i]._id+'">'+response[i].arabicName+'</a>'
     );
@@ -438,6 +440,8 @@ alert('عذرا، يرجى ادخال جميع البيانات');
     volunteerExperience = $('#distribution-expereince-field').val();
     fullName = $('#distribution-full-name-field').val();
     phone = $('#distribution-phone-field').val();
+    age = $('#distribution-age-field').val();
+    gender = $('#distribution-gender-field').val();
     address = $('#distribution-address-field').val();
     hasCar = $('#distribution-hasCar-field').is(":checked");
     wantsSupervisor = $('#distribution-wantsSupervisor-field').is(":checked");
@@ -458,7 +462,7 @@ alert('عذرا، يرجى ادخال جميع البيانات');
                 alert(errorMessage);
 
         }
-        console.log(error);
+        
         // [END_EXCLUDE]
       })
         .then(function(firebaseUser) {
@@ -480,12 +484,14 @@ alert('عذرا، يرجى ادخال جميع البيانات');
                     phone: phone,
                     address: address,
                     hasCar: hasCar,
-                    wantsSupervisor: wantsSupervisor
+                    wantsSupervisor: wantsSupervisor,
+                    age:age,
+                    gender:gender
 
                 }),
             success: function(response){
                
-                console.log(response);
+                
 
                 alert("عائلة ماتستعجل ترحب بك! \n تم تسجيلك بنجاح \n  رح نتواصل معك خلال ٤٨ ساعة \n كل ميزات التطبيق ستفعل ب 17/5/2017");
 
@@ -546,7 +552,7 @@ alert('عذرا، يرجى ادخال جميع البيانات');
                 alert(errorMessage);
 
         }
-        console.log(error);
+       
         // [END_EXCLUDE]
       })
         .then(function(firebaseUser) {
@@ -571,7 +577,7 @@ alert('عذرا، يرجى ادخال جميع البيانات');
                 }),
             success: function(response){
                
-                console.log(response);
+               
 
                 alert("عائلة ماتستعجل ترحب بك! \n تم تسجيلك بنجاح \n  رح نتواصل معك خلال ٤٨ ساعة \n كل ميزات التطبيق ستفعل ب 17/5/2017");
 
@@ -590,6 +596,25 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 }
 
     });
+$(document).on('click', 'a', function(){ 
+
+      $("a.selected").removeClass("selected");
+      $(this).addClass('selected');
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 $(document).on('click', '#how-to-button', function(){ 
@@ -604,40 +629,26 @@ $(document).on('click', '#login-btn', function(){
     var email = $('#login-email').val();
     var password = $('#login-password').val();
 
- firebase.auth().signInWithEmailAndPassword(email, password).catch(function(error) {
-        // Handle Errors here.
-        var errorCode = error.code;
-        var errorMessage = error.message;
-        // [START_EXCLUDE]
-        if (errorCode == 'auth/weak-password') {
-          alert('The password is too weak.');
-        } else {
-          alert(errorMessage);
-        }
-        console.log(error);
-        // [END_EXCLUDE]
-      })
-        .then(function(firebaseUser) {
 
-        if (firebaseUser) {
+        
          $.ajax({
-            url:'/api/admin',
+            url:'/api/login',
             contentType: 'application/json',
             method: 'POST',
              data: JSON.stringify({
-                    firebaseId: firebaseUser.uid
+                    userName: email,
+                    password:password
                 }),
             success: function(response){
                 $("#admin-body").html('');
                  $("#admin-body").append(response);
-                console.log(response);
+                
             }
 
 
          });
 
-        }
-     });
+     
  });
 
 
