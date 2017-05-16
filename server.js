@@ -471,7 +471,7 @@ res.json(error);
 
 
 
-app.delete('/api/deleteUser',function(req,res){
+app.post('/api/deleteUser',function(req,res){
 	var id = req.body.id
 
 	userModel.findByIdAndRemove(id, function (err,offer){
@@ -484,7 +484,7 @@ app.delete('/api/deleteUser',function(req,res){
 
 });
 
-app.delete('/api/deleteWareHouseUser',function(req,res){
+app.post('/api/deleteWareHouseUser',function(req,res){
 	var id = req.body.id
 
 	wareHouseUserModel.findByIdAndRemove(id, function (err,offer){
