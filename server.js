@@ -59,7 +59,7 @@ var userSchema = mongoose.Schema({
 	trafficLightId: {type: Number, required: true},
 	email: {type: String, required: true},
 	fullName : {type: String,required: true},
-	age: String,
+	age: {type: String, default: '20'},
 	phone: {type: String,required: true},
 	address: {type: String,required: true},
 	joined: {type: Date,required: true, default: Date.now},
@@ -68,7 +68,9 @@ var userSchema = mongoose.Schema({
 	lastActive:Date,
 	volunteerType: {type: String,required: true},
 	volunteerExperience: String,
-	lastCheckedIn: Date
+	lastCheckedIn: Date,
+	checkedBy:{type: String,required: true, default: '-'},
+	gender:{type: String,required: true, default: 'male'}
 
 },{collection: 'user'});
 
@@ -87,14 +89,16 @@ var wareHouseUserSchema = mongoose.Schema({
 	wareHouse: {type: Number, required: true},
 	email: {type: String, required: true},
 	fullName : {type: String,required: true},
-	age: String,
+	age: {type: String, default: '20'},
 	phone: {type: String,required: true},
 	address: {type: String,required: true},
 	joined: {type: Date,required: true, default: Date.now},
 	lastActive:Date,
 	volunteerType: {type: String,required: true},
 	volunteerExperience: String,
-	lastCheckedIn: Date
+	lastCheckedIn: Date,
+	checkedBy:{type: String,required: true, default: '-'},
+	gender:{type: String,required: true, default: 'male'}
 
 },{collection: 'wareHouseUser'});
 
@@ -109,7 +113,7 @@ var wareHouseUserModel = mongoose.model("wareHouseUserModel",wareHouseUserSchema
 
 var citySchema = mongoose.Schema({
 	
-	englishName: {type: String, required: true, unique: true},
+	englishName: {type: String, required: true,  default: '-'},
 	arabicName: {type: String, required: true, unique: true}
 
 },{collection: 'city'});
@@ -122,6 +126,19 @@ citySchema.plugin(autoIncrement.plugin, 'cityModel');
 var cityModel = mongoose.model("cityModel",citySchema);
 
 
+var managmentUserSchema = mongoose.Schema({
+	
+	userName: {type: String, required: true, unique: true},
+	password: {type: String, required: true}
+
+},{collection: 'managmentUser'});
+
+
+
+
+managmentUserSchema.plugin(autoIncrement.plugin, 'managmentUserModel');
+
+var managmentUserModel = mongoose.model("managmentUserModel",managmentUserSchema);
 
 
 var areaSchema = mongoose.Schema({
@@ -235,6 +252,32 @@ app.post('/api/city',function(req,res){
 
 });
 
+
+app.post('/api/managmentUser',function(req,res){
+
+	var user = req.body;
+	console.log(req.body);
+	
+
+	managmentUserModel
+		.create(user)
+		.then(
+			function(postObj){
+		 res.json(200); 
+		}
+,
+		function(error){
+			res.json(error)
+			res.sendStatus(400);
+
+				}
+
+		);
+
+});
+
+
+
 app.post('/api/area',function(req,res){
 
 	var area = req.body;
@@ -311,6 +354,27 @@ app.get('/api/city',function(req,res){
 });
 });
 
+app.get('/api/areas',function(req,res){
+
+	  areaModel.find(function (err, cities) {
+  if (err) return console.error(err);
+  console.log(cities);
+  
+  res.json(cities)
+});
+});
+
+app.get('/api/lights',function(req,res){
+
+	  lightModel.find(function (err, cities) {
+  if (err) return console.error(err);
+  console.log(cities);
+  
+  res.json(cities)
+});
+});
+
+
 app.get('/api/area',function(req,res){
 	var cityId = req.query.city
 	console.log(req.query);
@@ -340,7 +404,229 @@ app.get('/api/wareHouse',function(req,res){
 });
 });
 
+app.get('/api/user',function(req,res){
+		
+	  userModel.find( function (err, users) {
+  if (err) return console.error(err);
+  console.log(users);
+  res.json(users)
+});
+});
 
+app.get('/api/wareHouseUser',function(req,res){
+		
+	  wareHouseUserModel.find( function (err, users) {
+  if (err) return console.error(err);
+  console.log(users);
+  res.json(users)
+});
+});
+
+app.put('/api/updateUser',function(req,res){
+
+	var id = req.body.id,
+       body = req.body;
+  console.log(body);
+  userModel.findByIdAndUpdate(id, body, function(error, courses) {
+    // Handle the error using the Express error middleware
+    if(error){
+res.json(error);
+     return next(error);}
+    
+    // Render not found error
+    if(!courses) {
+      return res.status(404).json({
+        message: 'Course with id ' + id + ' can not be found.'
+      });
+    }
+
+    res.json(courses);
+  });
+});
+
+
+
+app.put('/api/updateWareHouseUser',function(req,res){
+
+	var id = req.body.id,
+       body = req.body;
+  console.log(body);
+  wareHouseUserModel.findByIdAndUpdate(id, body, function(error, courses) {
+    // Handle the error using the Express error middleware
+    if(error){
+res.json(error);
+     return next(error);}
+    
+    // Render not found error
+    if(!courses) {
+      return res.status(404).json({
+        message: 'Course with id ' + id + ' can not be found.'
+      });
+    }
+
+    res.json(courses);
+  });
+});
+
+
+
+
+app.delete('/api/deleteUser',function(req,res){
+	var id = req.body.id
+
+	userModel.findByIdAndRemove(id, function (err,offer){
+    if(err) { throw err; }
+
+    res.json(offer);
+    // ...
+});
+
+
+});
+
+app.delete('/api/deleteWareHouseUser',function(req,res){
+	var id = req.body.id
+
+	wareHouseUserModel.findByIdAndRemove(id, function (err,offer){
+    if(err) { throw err; }
+
+    res.json(offer);
+    // ...
+});
+
+
+});
+
+
+
+app.post('/api/login',function(req,res){
+
+managmentUserModel.findOne({userName:req.body.userName},function(err,user){
+
+	if(!user){
+
+		res.render('admin.ejs',{err: 'invalid username'});
+
+	}else if (req.body.password === user.password){
+
+		res.render('dashboard.ejs');
+	}else{
+		res.render('admin.ejs',{err: 'invalid username'});
+
+	}
+});
+	});
+
+app.post('/api/usersOfCity',function(req,res){
+console.log(req.body);
+userModel.find({city:req.body.city}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
+
+app.post('/api/usersOfArea',function(req,res){
+console.log(req.body);
+userModel.find({area:req.body.area}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
+
+
+
+app.post('/api/usersInCity',function(req,res){
+
+userModel.find({city:req.body.city}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/usersInWareHouse',function(req,res){
+
+wareHouseUserModel.find({wareHouse:req.body.wareHouse}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/usersOfWareHouse',function(req,res){
+console.log(req.body);
+wareHouseUserModel.find({wareHouse:req.body.wareHouse}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
+
+app.post('/api/usersInArea',function(req,res){
+
+userModel.find({area:req.body.area}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/usersInLight',function(req,res){
+
+userModel.find({trafficLightId:req.body.light}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/usersOfLight',function(req,res){
+
+userModel.find({trafficLightId:req.body.light}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
+
+
+app.post('/api/areasInCity',function(req,res){
+
+areaModel.find({city:req.body.city}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/lightsInArea',function(req,res){
+
+lightModel.find({area:req.body.area}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
+
+app.post('/api/lightsOfArea',function(req,res){
+
+lightModel.find({area:req.body.area}).exec(function(err,users){
+	
+	
+	res.json(users);
+});
+	});
+
+app.post('/api/lightsInCity',function(req,res){
+
+lightModel.find({city:req.body.city}).exec(function(err,users){
+	var count = users.length;
+	
+	res.json(count);
+});
+	});
 
 app.post('/api/userByFirebaseId',function(req,res){
 
@@ -350,3 +636,5 @@ userModel.find({firebaseId:req.body.firebaseId}).exec(function(err,users){
 	res.json(users);
 });
 	});
+
+
