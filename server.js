@@ -637,4 +637,13 @@ userModel.find({firebaseId:req.body.firebaseId}).exec(function(err,users){
 });
 	});
 
+app.post('/api/lightById',function(req,res){
+
+lightModel.find({_id:req.body.id}).exec(function(err,lights){
+	
+	
+	res.json(lights);
+});
+	});
+
 
