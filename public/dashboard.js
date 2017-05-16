@@ -390,7 +390,7 @@ $("#table-body").html('');
        $.ajax({
             url:'/api/deleteUser',
             contentType: 'application/json',
-            method: 'DELETE',
+            method: 'POST',
             // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
              dataType: 'json',
              data: JSON.stringify({
@@ -427,7 +427,7 @@ $("#table-body").html('');
        $.ajax({
             url:'/api/deleteWareHouseUser',
             contentType: 'application/json',
-            method: 'DELETE',
+            method: 'POST',
             // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
              dataType: 'json',
              data: JSON.stringify({
