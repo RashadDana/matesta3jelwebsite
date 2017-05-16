@@ -1,1 +1,92 @@
-<h1>Admin dashboard</h1>
+<!DOCTYPE html>
+<html ng-app="matApp">
+<head>
+<title>Admin Panel</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.min.css">
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link rel="stylesheet" type="text/css" href="admin.css">
+
+
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+<script src="https://www.gstatic.com/firebasejs/3.7.5/firebase.js"></script>
+
+
+
+  
+  
+</head>
+<body id="admin-body">
+
+<script>
+
+</script>
+
+
+<div id="header">
+    
+<div class ="admin-logo">Ma Testa3jel - Admin Panel</div>
+
+</div>
+
+<div id="container">
+        
+        <div class="sidebar">
+
+        <ul id="nav">
+
+                <li><a href="#" class="selected" id="distribution-tab">Traffic Light Volunteers</a></li>
+                <li><a href="#" id="packaging-tab">Packaging Volunteers</a></li>
+                <li><a href="#" id="cities-dashboard-tab" >Traffic Lights</a></li>
+                <li><a href="#" id="wareHouses-dashboard-tab" >Ware Houses</a></li>
+                <li><a href="#" id="addVolunteer-dashboard-tab" >Add Volunteer</a></li>
+
+        </ul>
+        </div>
+        <div class="content">
+    <div class="container data-container">
+    <div id="data-title">
+  <h2>Traffic Light Volunteers</h2>
+  <p>List of people who volunteered for Ma Testa3jel intiative:</p>    
+  </div>     
+
+<div >
+      <table class="table table-hover">
+        <thead id = "table-head">
+         
+        </thead>
+        <tbody id = "table-body">
+        
+        </tbody>
+  </table>
+</div>
+</div>
+
+        </div>
+</div>
+
+<!-- <footer>
+  <div class="wrapper">
+
+        <h5 class="content-center inline-block"> Developed by <a href="https://digitalalertapps.com">digitalalertapps.com</a> </h5> 
+    
+        <nav>
+
+        <a href="#"  class ="button btn-scroll  call-us-btn"> اتصل بنا | </a> 
+        <a href="#"  class ="">00962796575425</a> 
+        <a href="https://web.facebook.com/Matesta3jel/"><i style= "color: #2196F3;  font-size: 20px;" class="fa fa-facebook-square" aria-hidden="true"></i></a>
+        </nav>
+  </div>
+
+</footer> -->
+
+
+<script type="text/javascript" src="dashboard.js"></script>
+</body>
+</html>
