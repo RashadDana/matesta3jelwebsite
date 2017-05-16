@@ -646,4 +646,13 @@ lightModel.find({_id:req.body.id}).exec(function(err,lights){
 });
 	});
 
+app.post('/api/areaById',function(req,res){
+
+areaModel.find({_id:req.body.id}).exec(function(err,areas){
+	
+	
+	res.json(areas);
+});
+	});
+
 
