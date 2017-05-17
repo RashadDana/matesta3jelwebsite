@@ -6,7 +6,7 @@ var mongoose = require('mongoose'),
 // var connection = mongoose.connect('mongodb://localhost/test');
 var connection = mongoose.connect('mongodb://admin:admin@ec2-34-206-20-114.compute-1.amazonaws.com:27017/MA_Database');
 var path = require('path');
-
+var request = require('request');
 
 
 autoIncrement.initialize(connection);
@@ -191,6 +191,21 @@ app.post('/api/user',function(req,res){
 		.create(user)
 		.then(
 			function(postObj){
+
+				var number = req.body.phone.substring(1);
+
+request({
+  method: 'POST',
+  url: 'http://api.unifonic.com/rest/Messages/Send',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: "AppSid=mBTuQPpEgcXLUJrydipVFGbGdcztc&Recipient=962"+number+"&Body=تم تسجيلك بنجاح، سنقوم بالتواصل معك خلال ٤٨ ساعة، عائلة ماتستعجل ترحب بك"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+});
 		 res.json(200); 
 		}
 ,
@@ -214,6 +229,22 @@ app.post('/api/wareHouseUser',function(req,res){
 		.create(user)
 		.then(
 			function(postObj){
+
+var number = req.body.phone.substring(1);
+
+request({
+  method: 'POST',
+  url: 'http://api.unifonic.com/rest/Messages/Send',
+  headers: {
+    'Content-Type': 'application/x-www-form-urlencoded'
+  },
+  body: "AppSid=mBTuQPpEgcXLUJrydipVFGbGdcztc&Recipient=962"+number+"&Body=تم تسجيلك بنجاح، سنقوم بالتواصل معك خلال ٤٨ ساعة، عائلة ماتستعجل ترحب بك"
+}, function (error, response, body) {
+  console.log('Status:', response.statusCode);
+  console.log('Headers:', JSON.stringify(response.headers));
+  console.log('Response:', body);
+});
+
 		 res.json(200); 
 		}
 ,
