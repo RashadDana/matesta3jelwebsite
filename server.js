@@ -121,6 +121,30 @@ var citySchema = mongoose.Schema({
 
 
 
+
+
+
+var checkInSchema = mongoose.Schema({
+	
+	userId: {type: Number, required: true},
+	superId: {type: Number, required: true},
+	date: {type: Date,required: true, default: Date.now}
+
+},{collection: 'checkIn'});
+
+checkInSchema.plugin(autoIncrement.plugin, 'checkInModel');
+
+var checkInModel = mongoose.model("checkInModel",checkInSchema);
+
+
+
+
+
+
+
+
+
+
 citySchema.plugin(autoIncrement.plugin, 'cityModel');
 
 var cityModel = mongoose.model("cityModel",citySchema);
@@ -686,4 +710,34 @@ areaModel.find({_id:req.body.id}).exec(function(err,areas){
 });
 	});
 
+app.post('/api/checkIn',function(req,res){
+
+	var checkIn = req.body;
+	console.log(req.body);
+	
+
+	checkInModel
+		.create(checkIn)
+		.then(
+			function(postObj){
+		 res.json(200); 
+		}
+,
+		function(error){
+			res.sendStatus(400);
+				}
+
+		);
+});
+
+app.get('/api/checkIn',function(req,res){
+
+	  checkInModel.find(function (err, checkIns) {
+  if (err) return console.error(err);
+  console.log(checkIns);
+  
+  res.json(checkIns)
+});
+});
+	
 
