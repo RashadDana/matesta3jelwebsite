@@ -284,7 +284,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-gender-field" name="fullName" size="5" value="'+ response[i].gender+'"></td>'+
         '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
         '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
-        '<td><input type="text" disabled class="distri-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
         // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
         // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
        '<td class="dropdown">'+ 
@@ -659,7 +659,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-gender-field" name="fullName"  size="5" value="'+ response[i].gender+'"></td>'+
         '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
         '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
-        '<td><input type="text" disabled class="distri-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
         // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
            // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
         // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
@@ -1288,7 +1288,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-gender-field" name="fullName" size="5" value="'+ response[i].gender+'"></td>'+
         '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
         '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
-        '<td><input type="text" disabled class="distri-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
         // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
                 // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
         // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
@@ -1470,7 +1470,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-gender-field" name="fullName" size="5" value="'+ response[i].gender+'"></td>'+
         '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
         '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
-        '<td><input type="text" disabled class="distri-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
         // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
                 // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
         // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
@@ -1653,7 +1653,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-gender-field" name="fullName" size="5" value="'+ response[i].gender+'"></td>'+
         '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
         '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
-        '<td><input type="text" disabled class="distri-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
         // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
                 // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
         // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
