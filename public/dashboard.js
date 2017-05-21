@@ -1770,6 +1770,7 @@ $("#table-body").html('');
             '<th></th>'+
             '<th></th>'+
             '<th></th>'+
+            '<th></th>'+
             '<th>ID</th>'+
             '<th>Name</th>'+
         '<th># of Volunteers</th>'+
@@ -1807,6 +1808,7 @@ for (var i = 0; i < response.length; i++) {
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-light">Update</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-light">Delete</button></td>'+
+        '<td><button type="button" class="btn btn-info btn-hide-light">Hide</button></td>'+
         '<td class="distru-id-light-field">'+ id+'</td>'+
         '<td><input type="text" disabled class="distru-light-fullName-field" name="fullName" value="'+ name+'"></td>'+
         '<td><span class="btn btn-primary display-light-volunteers" city="'+id+'">'+ usersCount +'</span></td>'+
@@ -2344,6 +2346,39 @@ alert('عذرا، يرجى ادخال جميع البيانات');
                 }),
             success: function(response){
                     alert("Traffic light has been updated !")
+              
+            }
+
+
+         });
+
+  
+});
+
+
+
+        $(document).on('click', ".btn-hide-light", function(){  
+
+    $(this).parent().parent().find("td").find('input').attr('disabled', true);
+    
+
+    var id = $(this).parent().parent().find('.distru-id-light-field').html();
+    var englishName = "hidden";
+    
+      
+   
+       $.ajax({
+            url:'/api/updateTrafficLight',
+            contentType: 'application/json',
+            method: 'PUT',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     id: parseInt(id, 10),
+               englishName:englishName,
+                }),
+            success: function(response){
+                    alert("Traffic light is now hidden !")
               
             }
 
