@@ -180,9 +180,9 @@ var areaModel = mongoose.model("areaModel",areaSchema);
 var lightSchema = mongoose.Schema({
 	city: {type: Number, required: true},
 	area: {type: Number, required: true},
-	englishName: {type: String, required: true, unique: true},
+	englishName: {type: String, required: true},
 	arabicName: {type: String, required: true, unique: true},
-	nickName:  String
+	nickName:  {type: String, default: '-'}
 
 },{collection: 'light'});
 
