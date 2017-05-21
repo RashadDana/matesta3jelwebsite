@@ -2163,6 +2163,163 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 
 
 
+$(document).on('click', '#addLight-dashboard-tab', function(){ 
+
+     
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+            
+           
+                $("#data-title").html('');
+                 $("#data-title").append(
+            '<h2>Add new traffic light</h2>');
+       
+        $("#table-body").html('');
+        
+                  $("#table-head").html('');
+        $("#table-head").append(
+            '<tr>'+
+            '<th></th>'+
+            
+            
+        '<th>Name</th>'+
+       '<th>Name in english</th>'+
+       
+        '<th>City</th>'+
+       '<th>Area</th>'+
+       
+        
+        '</tr>');
+$("#table-body").html('');
+
+                
+
+    
+
+                
+                         $("#table-body").append(''+
+                                '<tr>'+
+                          
+        '<td><button type="button" class="btn btn-success" id="btn-add-trafficLight">Add</button></td>'+
+        
+        
+        '<td><input type="text"  id="distru-added-light-fullName-field" name="fullName" value=""></td>'+
+        '<td><input type="text"  id="distru-added-light-englishName-field" name="fullName" value=""></td>'+
+       
+        // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
+           // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
+        // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
+   '<td class="dropdown">'+ 
+               ' <form action="" name="FILTER" >'+ 
+                     '<select name="filter_for" id="city-for-added-light">'+ 
+                        
+                         
+                     '</select>'+ 
+                '</form>'+ 
+            '</td>'+ 
+
+        // '<td><input type="text" disabled class="distru-area-field" name="fullName" value="'+area +'"></td>'+
+
+ '<td class="dropdown">'+ 
+               ' <form action="" name="FILTER" >'+ 
+                     '<select name="filter_for" id="area-for-added-light">'+ 
+                        
+                         
+                     '</select>'+ 
+                '</form>'+ 
+            '</td>'
+
+
+    );
+
+                 
+
+            
+                $('#city-for-light').html(''); 
+           for (var j = 0; j < cities.length; j++) {
+                    
+                     $('#city-for-added-light').append('<option value="'+cities[j].id+'">'+cities[j].arabicName+'</option>' );
+
+                 
+                     
+                 }
+
+                  $('#area-for-added-light').html(''); 
+           for (var j = 0; j < areas.length; j++) {
+                 
+                     $('#area-for-added-light').append('<option value="'+areas[j].id+'">'+areas[j].arabicName+'</option>' );
+
+                 
+                     
+                 }
+
+
+
+         });
+
+
+
+
+$(document).on('click', '#btn-add-trafficLight', function(){  
+
+
+  
+
+if ( $('#distru-added-light-fullName-field').val() == "") {
+
+alert('عذرا، يرجى ادخال جميع البيانات');
+} else if  ($('#distru-added-light-englishName-field').val() == "" ){
+        alert('عذرا، يرجى ادخال جميع البيانات');
+
+}  else{
+
+    
+    arabicName = $('#distru-added-light-fullName-field').val();
+    englishName = $('#distru-added-light-englishName-field').val();
+
+    city =  $('#city-for-added-light').find(":selected").val();
+    area =  $('#area-for-added-light').find(":selected").val();
+    
+
+   
+         $.ajax({
+            url:'/api/light',
+            contentType: 'application/json',
+            method: 'POST',
+             data: JSON.stringify({
+                    arabicName:arabicName,
+                    englishName:englishName,
+                    city: city,
+                    area: area
+                    
+
+                }),
+            success: function(response){
+               
+                console.log(response);
+
+                if (response == "200"){
+
+                    alert("Traffic light added successfuly !")
+                }else {
+                    alert("failed to add new traffic light")
+
+                }
+
+              
+            }
+
+
+         });
+
+
+
+
+}
+    });
+
+
+
+
    });
 
 
