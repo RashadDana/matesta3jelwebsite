@@ -2354,6 +2354,41 @@ alert('عذرا، يرجى ادخال جميع البيانات');
 });
 
 
+           $(document).on('click', ".btn-delete-light", function(){ 
+
+        var id = $(this).parent().parent().find('.distru-id-light-field').html();
+
+        if (confirm("Delete traffic light with id = " + id) == true) {
+
+               
+       $.ajax({
+            url:'/api/deleteLight',
+            contentType: 'application/json',
+            method: 'POST',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     id: id,
+                
+                }),
+            success: function(response){
+alert("Traffic light has been deleted !")
+           
+  
+            }
+
+
+         });
+       
+    } else {
+        
+    }
+    
+
+ 
+});
+
+
 
 
    });
