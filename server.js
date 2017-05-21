@@ -561,6 +561,20 @@ app.post('/api/deleteUser',function(req,res){
 
 });
 
+
+app.post('/api/deleteLight',function(req,res){
+	var id = req.body.id
+
+	lightModel.findByIdAndRemove(id, function (err,offer){
+    if(err) { throw err; }
+
+    res.json(offer);
+    // ...
+});
+
+
+});
+
 app.post('/api/deleteWareHouseUser',function(req,res){
 	var id = req.body.id
 
