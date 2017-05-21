@@ -190,16 +190,22 @@ $(document).ready(function() {
             success: function(response){
 
                 for (var i = 0; i < response.length; i++) {
-    
-                     
+                        
+                     if (response[i].englishName === "hidden"){
+
+
+                     }else {
                          $("#menu3").append(''+
                              '<a class="list-group-item traffic-light-item " lightId="'+ response[i]._id+'">'+response[i].arabicName+'</a>'
-    );
+                            );
+                         }
+                     }
+    
 }
             }
 
 
-         });
+         );
 
             var n = $('#scoll-anchor').position();
     $('html, body').animate({ scrollTop: n.top },500);
