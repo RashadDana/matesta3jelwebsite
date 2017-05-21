@@ -120,7 +120,9 @@ var citySchema = mongoose.Schema({
 
 
 
+citySchema.plugin(autoIncrement.plugin, 'cityModel');
 
+var cityModel = mongoose.model("cityModel",citySchema);
 
 
 
@@ -145,9 +147,7 @@ var checkInModel = mongoose.model("checkInModel",checkInSchema);
 
 
 
-citySchema.plugin(autoIncrement.plugin, 'cityModel');
 
-var cityModel = mongoose.model("cityModel",citySchema);
 
 
 var managmentUserSchema = mongoose.Schema({
@@ -483,6 +483,28 @@ app.put('/api/updateUser',function(req,res){
        body = req.body;
   console.log(body);
   userModel.findByIdAndUpdate(id, body, function(error, courses) {
+    // Handle the error using the Express error middleware
+    if(error){
+res.json(error);
+     return next(error);}
+    
+    // Render not found error
+    if(!courses) {
+      return res.status(404).json({
+        message: 'Course with id ' + id + ' can not be found.'
+      });
+    }
+
+    res.json(courses);
+  });
+});
+
+app.put('/api/updateTrafficLight',function(req,res){
+
+	var id = req.body.id,
+       body = req.body;
+  console.log(body);
+  lightModel.findByIdAndUpdate(id, body, function(error, courses) {
     // Handle the error using the Express error middleware
     if(error){
 res.json(error);
