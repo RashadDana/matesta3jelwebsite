@@ -79,8 +79,8 @@ $(document).ready(function() {
             '<input class="form-control info-form-item" id="distribution-full-name-field" placeholder="الاسم الكامل"/>'+
         	'<input class="form-control info-form-item" id="distribution-email-field" placeholder="البريد الالكتروني"/>'+
         	'<input class="form-control info-form-item" id="distribution-password-field" type="password" placeholder="كلمة السر"/>'+
-        	'<input class="form-control info-form-item" id="distribution-gender-field" type="password" placeholder="الجنس"/>'+
-            '<input class="form-control info-form-item" id="distribution-age-field" type="password" placeholder="العمر"/>'+
+        	'<input class="form-control info-form-item" id="distribution-gender-field"  placeholder="الجنس"/>'+
+            '<input class="form-control info-form-item" id="distribution-age-field"  placeholder="العمر"/>'+
         	'<input class="form-control info-form-item" id="distribution-phone-field" placeholder="رقم الهاتف"/>'+
         	'<input class="form-control info-form-item" id="distribution-address-field" placeholder="العنوان - اقرب معلم"/>'+
             '<textarea class="form-control info-form-item" id="distribution-expereince-field" placeholder="خبرة تطوعية سابقة"/>'+
