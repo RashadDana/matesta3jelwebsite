@@ -405,14 +405,17 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
-                    if (lights[j].id == response[i].trafficLightId){
+
+            if (lights[j].area == $('.distru-area-field').val()){
+
+                    if (lights[j].id == response[i].trafficLightId ){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
                  }else{
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 
+                 }
                      
                  }
 }
@@ -422,6 +425,28 @@ $("#table-body").html('');
          });
 
        }
+
+        $(document).on('change','.distru-area-field',function(){
+
+
+var n = $(this).attr('id').lastIndexOf("-");
+
+var id = $(this).attr('id').substring(n+1);
+
+
+
+                       $('#light-for-user-'+id+'').html(''); 
+           for (var j = 0; j < lights.length; j++) {
+
+            if (lights[j].area == $('#area-for-user-'+id+'').val()){
+                   
+                     $('#light-for-user-'+id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
+
+                 
+                 }
+                     
+                 }
+          });
 
 
 
@@ -797,6 +822,8 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
+
+            if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -804,7 +831,7 @@ $("#table-body").html('');
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 
+                 }
                      
                  }
 }
@@ -1428,6 +1455,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
+            if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1435,7 +1463,7 @@ $("#table-body").html('');
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 
+                 }
                      
                  }
 }
@@ -1614,6 +1642,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
+            if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1622,7 +1651,7 @@ $("#table-body").html('');
 
                  }
                  
-                     
+                     }
                  }
 }
             }
@@ -1798,6 +1827,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
+            if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1806,7 +1836,7 @@ $("#table-body").html('');
 
                  }
                  
-                     
+                     }
                  }
 }
             }
