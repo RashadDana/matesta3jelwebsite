@@ -170,6 +170,59 @@ function getWareHouseId(name){
 
          });
 
+
+
+         refresh();
+
+
+
+    $(document).on('click', ".btn-warning", function(){  
+    
+
+    $(this).parent().parent().find("td").find('input').removeAttr('disabled');
+});
+
+
+
+
+       $(document).on('click', ".btn-delete-normalUser", function(){ 
+
+        var id = $(this).parent().parent().find('.distru-id-field').html();
+
+        if (confirm("Delete user with id = " + id) == true) {
+
+               
+       $.ajax({
+            url:'/api/deleteUser',
+            contentType: 'application/json',
+            method: 'POST',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     id: id,
+                
+                }),
+            success: function(response){
+
+           
+  
+            }
+
+
+         });
+       
+    } else {
+        
+    }
+    
+
+ 
+});
+
+       function refresh(){
+
+        $("#table-body").html('');
+        
        $.ajax({
             url:'/api/lights',
             contentType: 'application/json',
@@ -368,52 +421,7 @@ $("#table-body").html('');
 
          });
 
-
-
-
-
-    $(document).on('click', ".btn-warning", function(){  
-    
-
-    $(this).parent().parent().find("td").find('input').removeAttr('disabled');
-});
-
-
-
-
-       $(document).on('click', ".btn-delete-normalUser", function(){ 
-
-        var id = $(this).parent().parent().find('.distru-id-field').html();
-
-        if (confirm("Delete user with id = " + id) == true) {
-
-               
-       $.ajax({
-            url:'/api/deleteUser',
-            contentType: 'application/json',
-            method: 'POST',
-            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
-             dataType: 'json',
-             data: JSON.stringify({
-                     id: id,
-                
-                }),
-            success: function(response){
-
-           
-  
-            }
-
-
-         });
-       
-    } else {
-        
-    }
-    
-
- 
-});
+       }
 
 
 
@@ -503,6 +511,7 @@ $("#table-body").html('');
                 }),
             success: function(response){
                     alert("user has been verified !")
+                    refresh();
               
             }
 
@@ -560,6 +569,7 @@ $("#table-body").html('');
                 }),
             success: function(response){
                     alert("user has been verified !")
+                    refresh();
               
             }
 
