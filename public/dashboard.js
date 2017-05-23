@@ -275,7 +275,8 @@ $("#table-body").html('');
                          $("#table-body").append(''+
                                 '<tr>'+
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
-        '<td><button type="button" class="btn btn-success btn-save-normalUser">Verify</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
         '<td class="distru-id-field">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
@@ -320,7 +321,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="4" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -498,7 +499,64 @@ $("#table-body").html('');
                 hasCar: hasCar,
                 wantsSupervisor: wantsSupervisor,
                 gender:gender,
-                checkedBy: "Verified"
+                checkedBy: "Verified by crystel"
+                }),
+            success: function(response){
+                    alert("user has been verified !")
+              
+            }
+
+
+         });
+
+  
+});
+
+
+
+
+        $(document).on('click', ".btn-save-mngmnt-normalUser", function(){  
+
+    $(this).parent().parent().find("td").find('input').attr('disabled', true);
+    
+
+    var id = $(this).parent().parent().find('.distru-id-field').html();
+    var name = $(this).parent().parent().find("td").find('.distru-fullName-field').val();
+    var phone = $(this).parent().parent().find("td").find('.distru-phone-field').val();
+    var gender = $(this).parent().parent().find("td").find('.distru-gender-field').val();
+    var age = $(this).parent().parent().find("td").find('.distru-age-field').val();
+    var hasCar = $(this).parent().parent().find("td").find('.distru-hasCar-field').val();
+    var wantsSupervisor = $(this).parent().parent().find("td").find('.distru-wantsSupervisor-field').val();
+    // var type = $(this).parent().parent().find("td").find('.distru-type-field').val();
+    var city = $(this).parent().parent().find("td").find("form").find('.distru-city-field').val();
+    var area = $(this).parent().parent().find("td").find("form").find('.distru-area-field').val();
+    var trafficLight = $(this).parent().parent().find("td").find("form").find('.distru-trafficLight-field').val();
+    var email = $(this).parent().parent().find("td").find('.distru-email-field').val();
+    var address = $(this).parent().parent().find("td").find('.distru-address-field').val();
+    var exp = $(this).parent().parent().find("td").find('.distru-exp-field').val();
+      
+   
+       $.ajax({
+            url:'/api/updateUser',
+            contentType: 'application/json',
+            method: 'PUT',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     id: parseInt(id, 10),
+                city: parseInt(city, 10),
+                area: parseInt(area, 10),
+                trafficLightId: parseInt(trafficLight, 10),
+                // volunteerType: type,
+                email: email,
+                volunteerExperience: exp,
+                fullName: name,
+                phone: phone,
+                address: address,
+                hasCar: hasCar,
+                wantsSupervisor: wantsSupervisor,
+                gender:gender,
+                checkedBy: "Verified by mngmnt"
                 }),
             success: function(response){
                     alert("user has been verified !")
@@ -592,6 +650,7 @@ $(document).on('click', '#distribution-tab', function(){
             '<th></th>'+
             '<th></th>'+
             '<th></th>'+
+            '<th></th>'+
             '<th>ID</th>'+
         '<th>Name</th>'+
        '<th>Email</th>'+
@@ -650,7 +709,8 @@ $("#table-body").html('');
                          $("#table-body").append(''+
                                 '<tr>'+
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
-        '<td><button type="button" class="btn btn-success btn-save-normalUser">Verify</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
         '<td class="distru-id-field">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
@@ -695,7 +755,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="4" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -835,7 +895,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="packaging-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="packaging-volunteerExperience-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled class="packaging-checkedBy-field" size="3" name="fullName" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled class="packaging-checkedBy-field" size="16" name="fullName" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1169,7 +1229,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="packaging-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="packaging-volunteerExperience-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled class="packaging-checkedBy-field" size="3" name="fullName" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled class="packaging-checkedBy-field" size="16" name="fullName" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1218,6 +1278,7 @@ $("#table-body").html('');
                   $("#table-head").html('');
         $("#table-head").append(
             '<tr>'+
+            '<th></th>'+
             '<th></th>'+
             '<th></th>'+
             '<th></th>'+
@@ -1279,7 +1340,8 @@ $("#table-body").html('');
                          $("#table-body").append(''+
                                 '<tr>'+
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
-        '<td><button type="button" class="btn btn-success btn-save-normalUser">Verify</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
         '<td class="distru-id-field">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
@@ -1324,7 +1386,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="4" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1403,6 +1465,7 @@ $("#table-body").html('');
             '<th></th>'+
             '<th></th>'+
             '<th></th>'+
+            '<th></th>'+
             '<th>ID</th>'+
         '<th>Name</th>'+
        '<th>Email</th>'+
@@ -1461,7 +1524,8 @@ $("#table-body").html('');
                          $("#table-body").append(''+
                                 '<tr>'+
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
-        '<td><button type="button" class="btn btn-success btn-save-normalUser">Verify</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
         '<td class="distru-id-field">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
@@ -1506,7 +1570,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="4" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1586,6 +1650,7 @@ $("#table-body").html('');
             '<th></th>'+
             '<th></th>'+
             '<th></th>'+
+            '<th></th>'+
             '<th>ID</th>'+
         '<th>Name</th>'+
        '<th>Email</th>'+
@@ -1644,7 +1709,8 @@ $("#table-body").html('');
                          $("#table-body").append(''+
                                 '<tr>'+
                           '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
-        '<td><button type="button" class="btn btn-success btn-save-normalUser">Verify</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
         '<td class="distru-id-field">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
@@ -1689,7 +1755,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="4" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
