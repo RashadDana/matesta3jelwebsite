@@ -203,7 +203,7 @@ function getWareHouseId(name){
                 
                 }),
             success: function(response){
-
+             refresh();
            
   
             }
@@ -222,7 +222,7 @@ function getWareHouseId(name){
        function refresh(){
 
         $("#table-body").html('');
-        
+
        $.ajax({
             url:'/api/lights',
             contentType: 'application/json',
