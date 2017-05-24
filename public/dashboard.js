@@ -203,7 +203,7 @@ function getWareHouseId(name){
                 
                 }),
             success: function(response){
-             refresh();
+             
            
   
             }
@@ -269,7 +269,7 @@ function getWareHouseId(name){
             '<tr>'+
             '<th></th>'+
             '<th></th>'+
-
+            '<th></th>'+
             '<th></th>'+
             '<th>ID</th>'+
         '<th>Name</th>'+
@@ -375,7 +375,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled class="distru-checked-by-field" name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -511,7 +511,7 @@ var id = $(this).attr('id').substring(n+1);
     var email = $(this).parent().parent().find("td").find('.distru-email-field').val();
     var address = $(this).parent().parent().find("td").find('.distru-address-field').val();
     var exp = $(this).parent().parent().find("td").find('.distru-exp-field').val();
-      
+    var obj = $(this);
    
        $.ajax({
             url:'/api/updateUser',
@@ -537,7 +537,8 @@ var id = $(this).attr('id').substring(n+1);
                 }),
             success: function(response){
                     alert("user has been verified !")
-                    refresh();
+                    
+                    obj.parent().parent().find("td").find('.distru-checked-by-field').val('verified by crystel');
               
             }
 
@@ -569,7 +570,7 @@ var id = $(this).attr('id').substring(n+1);
     var email = $(this).parent().parent().find("td").find('.distru-email-field').val();
     var address = $(this).parent().parent().find("td").find('.distru-address-field').val();
     var exp = $(this).parent().parent().find("td").find('.distru-exp-field').val();
-      
+    var obj = $(this);
    
        $.ajax({
             url:'/api/updateUser',
@@ -595,7 +596,7 @@ var id = $(this).attr('id').substring(n+1);
                 }),
             success: function(response){
                     alert("user has been verified !")
-                    refresh();
+                    obj.parent().parent().find("td").find('.distru-checked-by-field').val('verified by mngmnt');
               
             }
 
@@ -791,7 +792,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled class="distru-checked-by-field" name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1424,7 +1425,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" class="distru-checked-by-field" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1609,7 +1610,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" class="distru-checked-by-field" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
@@ -1795,7 +1796,7 @@ $("#table-body").html('');
         '<td><input type="text" disabled class="distru-address-field" name="fullName" value="'+response[i].address +'"></td>'+
         '<td><input type="text" disabled class="distru-exp-field" name="fullName" value="'+ response[i].volunteerExperience+'"></td>'+
         
-        '<td><input type="text" disabled name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        '<td><input type="text" disabled name="fullName" class="distru-checked-by-field" size="16" value="'+ response[i].checkedBy+'"></td>'+
         
       '</tr>'
     );
