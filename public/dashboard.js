@@ -269,6 +269,7 @@ function getWareHouseId(name){
             '<tr>'+
             '<th></th>'+
             '<th></th>'+
+
             '<th></th>'+
             '<th>ID</th>'+
         '<th>Name</th>'+
@@ -406,7 +407,7 @@ $("#table-body").html('');
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
 
-            if (lights[j].area == $('.distru-area-field').val()){
+            // if (lights[j].area == $('.distru-area-field').val()){
 
                     if (lights[j].id == response[i].trafficLightId ){
 
@@ -415,7 +416,7 @@ $("#table-body").html('');
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 }
+                 // }
                      
                  }
 }
@@ -532,7 +533,7 @@ var id = $(this).attr('id').substring(n+1);
                 hasCar: hasCar,
                 wantsSupervisor: wantsSupervisor,
                 gender:gender,
-                checkedBy: "Verified by crystel"
+                checkedBy: "-"
                 }),
             success: function(response){
                     alert("user has been verified !")
@@ -590,7 +591,7 @@ var id = $(this).attr('id').substring(n+1);
                 hasCar: hasCar,
                 wantsSupervisor: wantsSupervisor,
                 gender:gender,
-                checkedBy: "Verified by mngmnt"
+                checkedBy: "-"
                 }),
             success: function(response){
                     alert("user has been verified !")
@@ -823,7 +824,7 @@ $("#table-body").html('');
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
 
-            if (lights[j].area == $('.distru-area-field').val()){
+            // if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -831,7 +832,7 @@ $("#table-body").html('');
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 }
+                 // }
                      
                  }
 }
@@ -1455,7 +1456,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
-            if (lights[j].area == $('.distru-area-field').val()){
+            // if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1463,7 +1464,7 @@ $("#table-body").html('');
                      $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
 
                  }
-                 }
+                 // }
                      
                  }
 }
@@ -1642,7 +1643,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
-            if (lights[j].area == $('.distru-area-field').val()){
+            // if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1651,7 +1652,7 @@ $("#table-body").html('');
 
                  }
                  
-                     }
+                     // }
                  }
 }
             }
@@ -1827,7 +1828,7 @@ $("#table-body").html('');
 
                   $('#light-for-user-'+response[i]._id+'').html(''); 
            for (var j = 0; j < lights.length; j++) {
-            if (lights[j].area == $('.distru-area-field').val()){
+            // if (lights[j].area == $('.distru-area-field').val()){
                     if (lights[j].id == response[i].trafficLightId){
 
                       $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
@@ -1836,7 +1837,7 @@ $("#table-body").html('');
 
                  }
                  
-                     }
+                     // }
                  }
 }
             }
