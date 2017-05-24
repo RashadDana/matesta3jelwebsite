@@ -533,7 +533,7 @@ var id = $(this).attr('id').substring(n+1);
                 hasCar: hasCar,
                 wantsSupervisor: wantsSupervisor,
                 gender:gender,
-                checkedBy: "-"
+                checkedBy: "verified by crystel"
                 }),
             success: function(response){
                     alert("user has been verified !")
@@ -591,7 +591,7 @@ var id = $(this).attr('id').substring(n+1);
                 hasCar: hasCar,
                 wantsSupervisor: wantsSupervisor,
                 gender:gender,
-                checkedBy: "-"
+                checkedBy: "verified by mngmnt"
                 }),
             success: function(response){
                     alert("user has been verified !")
