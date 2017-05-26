@@ -332,7 +332,7 @@ $("#table-body").html('');
         '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
-        '<td class="distru-id-field">'+ response[i]._id+'</td>'+
+        '<td class="distru-id-field user-chickIns btn btn-default">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
         '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
         '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
@@ -749,7 +749,7 @@ $("#table-body").html('');
         '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
-        '<td class="distru-id-field">'+ response[i]._id+'</td>'+
+        '<td class="distru-id-field user-chickIns btn btn-default">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
         '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
         '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
@@ -1382,7 +1382,7 @@ $("#table-body").html('');
         '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
-        '<td class="distru-id-field">'+ response[i]._id+'</td>'+
+        '<td class="distru-id-field user-chickIns btn btn-default">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
         '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
         '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
@@ -1567,7 +1567,7 @@ $("#table-body").html('');
         '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
-        '<td class="distru-id-field">'+ response[i]._id+'</td>'+
+        '<td class="distru-id-field user-chickIns btn btn-default">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
         '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
         '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
@@ -1753,7 +1753,7 @@ $("#table-body").html('');
         '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
         '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
         '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
-        '<td class="distru-id-field">'+ response[i]._id+'</td>'+
+        '<td class="distru-id-field user-chickIns btn btn-default">'+ response[i]._id+'</td>'+
         '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
         '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
         '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
@@ -2561,6 +2561,293 @@ alert("Traffic light has been deleted !")
         
     }
     
+
+ 
+});
+
+
+
+
+                      $(document).on('click', ".user-chickIns", function(){ 
+
+        var id = $(this).html();
+        
+
+     $.ajax({
+            url:'/api/userCheckIns',
+            contentType: 'application/json',
+            method: 'POST',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     userId: id,
+                
+                }),
+            success: function(response){
+            alert('user: ' + id +' has checked in ' +response+ ' times');
+           
+  
+            }
+
+
+         });
+
+ 
+});
+
+
+
+
+           $(document).on('click', ".super-chicks", function(){ 
+
+        var id = $(this).html();
+
+          $("#data-title").html('');
+                 $("#data-title").append(
+            '<h2>Single supervisor scans</h2>'
+  
+
+                    );
+                 $("#table-body").html('');
+                  $("#table-body").html('Supervisor hasn\'t scanned anyusers yet');
+        
+
+     $.ajax({
+            url:'/api/superCheckIns',
+            contentType: 'application/json',
+            method: 'POST',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: JSON.stringify({
+                     superId: id,
+                
+                }),
+            success: function(response){
+
+
+            $("#table-head").html('');
+           $("#table-body").html('');
+
+           $("#table-head").append(
+            '<tr>'+
+            '<th></th>'+
+            '<th>Scanned user Id</th>'+
+            '<th>Date</th>'+
+            '</tr>');
+
+          
+
+           for (var i = 0; i < response.length; i++) {
+
+            
+        
+
+             $("#table-body").append(''+
+                                '<tr>'+
+        '<td>'+(i + 1)+'</td>'+
+        '<td>'+response[i].userId+'</td>'+
+        
+        
+        '<td>'+response[i].date.substring(0,10)+'</td>'+
+        '</tr>'
+        );
+           }
+  
+            }
+
+
+         });
+
+ 
+});
+
+
+
+
+                                            $(document).on('click', "#superVisors-dashboard-tab", function(){ 
+
+ 
+        $("#table-body").html('');
+
+       $("#data-title").html('');
+                 $("#data-title").append(
+            '<h2>List of volunteering supervisors</h2>'
+  
+
+                    );
+
+
+
+           $.ajax({
+            url:'/api/superVisors',
+            contentType: 'application/json',
+            method: 'GET',
+            // contentType: 'application/x-www-form-urlencoded; charset=UTF-8',
+             dataType: 'json',
+             data: ({
+                    
+                }),
+            success: function(response){
+
+
+                  $("#table-head").html('');
+        $("#table-head").append(
+            '<tr>'+
+            '<th></th>'+
+            '<th></th>'+
+            '<th></th>'+
+            '<th></th>'+
+            '<th>ID</th>'+
+        '<th>Name</th>'+
+       '<th>Email</th>'+
+       '<th>Phone Number</th>'+
+       '<th>Gender</th>'+
+        '<th>Age</th>'+
+       '<th>Car</th>'+
+        '<th>Supervise</th>'+
+        // '<th>Type</th>'+
+        '<th>City</th>'+
+       '<th>Area</th>'+
+       '<th>Traffic Light</th>'+
+        
+        '<th>Verified</th>'+
+        
+        '</tr>');
+$("#table-body").html('');
+
+                for (var i = 0; i < response.length; i++) {
+
+                    var city = "";
+                    var area = "";
+                    var light = "";
+    
+             for (var j = 0; j < cities.length; j++){
+                
+                if (cities[j].id == response[i].city ){
+
+                       city = cities[j].arabicName;
+                }
+
+                }
+            for (var j = 0; j < areas.length; j++){
+
+                if (areas[j].id == response[i].area ){
+
+                       area = areas[j].arabicName;
+                }
+
+
+                }
+
+             for (var j = 0; j < lights.length; j++){
+
+                if (lights[j].id == response[i].trafficLightId ){
+
+                       light = lights[j].arabicName;
+                }
+
+
+                }
+
+
+                
+                         $("#table-body").append(''+
+                                '<tr>'+
+                          '<td><button type="button" class="btn btn-warning">Edit</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-normalUser">V. crystel</button></td>'+
+        '<td><button type="button" class="btn btn-success btn-save-mngmnt-normalUser">V. managment</button></td>'+
+        '<td><button type="button" class="btn btn-danger btn-delete-normalUser">Delete</button></td>'+
+        '<td class="distru-id-field btn btn-default super-chicks">'+ response[i]._id+'</td>'+
+        '<td><input type="text" disabled class="distru-fullName-field" name="fullName" value="'+ response[i].fullName+'"></td>'+
+        '<td><input type="text" disabled class="distru-email-field" name="fullName" value="'+ response[i].email+'"></td>'+
+        '<td><input type="text" disabled class="distru-phone-field" name="fullName" value="'+response[i].phone +'"></td>'+
+        '<td><input type="text" disabled class="distru-gender-field" name="fullName" size="5" value="'+ response[i].gender+'"></td>'+
+        '<td><input type="text" disabled class="distru-age-field" name="fullName" size="4" value="'+ response[i].age +'"></td>'+
+        '<td><input type="text" disabled class="distru-hasCar-field" name="fullName" size="4" value="'+ response[i].hasCar+'"></td>'+
+        '<td><input type="text" disabled class="distru-wantsSupervisor-field" name="fullName" size="4" value="'+ response[i].wantsSupervisor+'"></td>'+
+        // '<td><input type="text" disabled class="distru-type-field" name="fullName" size="9" value="'+ response[i].volunteerType+'"></td>'+
+        // '<td><input type="text" disabled class="distru-city-field" size="5" name="fullName" value="'+city+'"></td>'+
+       '<td class="dropdown">'+ 
+               ' <form action="" name="FILTER" >'+ 
+                     '<select name="filter_for" class="distru-city-field" id="city-for-user-'+response[i]._id+'">'+ 
+                        
+                         
+                     '</select>'+ 
+                '</form>'+ 
+            '</td>'+ 
+
+        // '<td><input type="text" disabled class="distru-area-field" name="fullName" value="'+area +'"></td>'+
+
+ '<td class="dropdown">'+ 
+               ' <form action="" name="FILTER" >'+ 
+                     '<select name="filter_for" class="distru-area-field" id="area-for-user-'+response[i]._id+'">'+ 
+                        
+                         
+                     '</select>'+ 
+                '</form>'+ 
+            '</td>'+ 
+
+        // '<td><input type="text" disabled class="distru-trafficLight-field" name="fullName" value="'+light +'"></td>'+
+'<td class="dropdown">'+ 
+               ' <form action="" name="FILTER" >'+ 
+                     '<select name="filter_for" class="distru-trafficLight-field" id="light-for-user-'+response[i]._id+'">'+ 
+                        
+                         
+                     '</select>'+ 
+                '</form>'+ 
+            '</td>'+ 
+
+        
+        
+        '<td><input type="text" disabled class="distru-checked-by-field" name="fullName" size="16" value="'+ response[i].checkedBy+'"></td>'+
+        
+      '</tr>'
+    );
+
+                $('#city-for-user-'+response[i]._id+'').html(''); 
+           for (var j = 0; j < cities.length; j++) {
+                    if (cities[j].id == response[i].city){
+
+                      $('#city-for-user-'+response[i]._id+'').append('<option selected value="'+cities[j].id+'">'+cities[j].arabicName+'</option>' );
+                 }else{
+                     $('#city-for-user-'+response[i]._id+'').append('<option value="'+cities[j].id+'">'+cities[j].arabicName+'</option>' );
+
+                 }
+                     
+                 }
+
+                  $('#area-for-user-'+response[i]._id+'').html(''); 
+           for (var j = 0; j < areas.length; j++) {
+                    if (areas[j].id == response[i].area){
+
+                      $('#area-for-user-'+response[i]._id+'').append('<option selected value="'+areas[j].id+'">'+areas[j].arabicName+'</option>' );
+                 }else{
+                     $('#area-for-user-'+response[i]._id+'').append('<option value="'+areas[j].id+'">'+areas[j].arabicName+'</option>' );
+
+                 }
+                     
+                 }
+
+                  $('#light-for-user-'+response[i]._id+'').html(''); 
+           for (var j = 0; j < lights.length; j++) {
+
+            // if (lights[j].area == $('.distru-area-field').val()){
+
+                    if (lights[j].id == response[i].trafficLightId ){
+
+                      $('#light-for-user-'+response[i]._id+'').append('<option selected value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
+                 }else{
+                     $('#light-for-user-'+response[i]._id+'').append('<option value="'+lights[j].id+'">'+lights[j].arabicName+'</option>' );
+
+                 }
+                 // }
+                     
+                 }
+}
+            }
+
+
+         });
 
  
 });
