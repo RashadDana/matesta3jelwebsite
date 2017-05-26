@@ -775,5 +775,35 @@ app.get('/api/checkIn',function(req,res){
   res.json(checkIns)
 });
 });
+
+app.post('/api/userCheckIns',function(req,res){
+
+checkInModel.find({userId:req.body.userId}).exec(function(err,checkIns){
+	var count = checkIns.length;
+	
+	res.json(count);
+});
+	});
+
+app.get('/api/superVisors',function(req,res){
+
+userModel.find({wantsSupervisor:true}).exec(function(err,superVisors){
+	
+	
+	res.json(superVisors);
+});
+	});
+
+
+app.post('/api/superCheckIns',function(req,res){
+
+checkInModel.find({superId:req.body.superId}).exec(function(err,checkIns){
+	
+	
+	res.json(checkIns);
+});
+	});
+
+
 	
 
