@@ -15,7 +15,17 @@ app.use(express.static(__dirname+'/public'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended:true}));
 
+var admin = require("firebase-admin");
+var schedule = require('node-schedule');
+var serviceAccount = require(__dirname+'/ma-testa3jel-app-firebase-adminsdk-vxgvw-bbc8049932.json');
 
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+  databaseURL: "https://ma-testa3jel-app.firebaseio.com"
+});
+
+var db = admin.database();
+var ref = db.ref("Alerts");
 
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'ejs');
@@ -281,6 +291,10 @@ request({
 		);
 
 });
+
+
+
+
 
 
 
@@ -805,5 +819,10 @@ checkInModel.find({superId:req.body.superId}).exec(function(err,checkIns){
 	});
 
 
-	
+var j = schedule.scheduleJob('0 0 * * *', function(){
+
+ref.remove();
+
+  
+});
 
