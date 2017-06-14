@@ -565,10 +565,20 @@ res.json(error);
 app.post('/api/deleteUser',function(req,res){
 	var id = req.body.id
 
-	userModel.findByIdAndRemove(id, function (err,offer){
+	userModel.findByIdAndRemove(id, function (err,user){
     if(err) { throw err; }
 
-    res.json(offer);
+
+	admin.auth().deleteUser(user.firebaseId)
+  .then(function() {
+    console.log("Successfully deleted user");
+  })
+  .catch(function(error) {
+    console.log("Error deleting user:", error);
+  });
+
+
+    res.json(user);
     // ...
 });
 
@@ -819,10 +829,10 @@ checkInModel.find({superId:req.body.superId}).exec(function(err,checkIns){
 	});
 
 
-var j = schedule.scheduleJob('0 0 * * *', function(){
+var j = schedule.scheduleJob('37 * * * *', function(){
 
 ref.remove();
 
-  
+  console.log("secret of the universe!");
 });
 
